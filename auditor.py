@@ -6,3 +6,5 @@ while True:
         break
     elif not userInput.isdigit() or int(userInput) < 0:
         print("invalid stock value")
+    else:
+        inventory += int(userInput)
