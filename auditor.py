@@ -8,3 +8,6 @@ while True:
         print("invalid stock value")
     else:
         inventory += int(userInput)
+        if inventory > 500:
+            print("Alert! Total Inventory Exceeding 500!")
+            break
