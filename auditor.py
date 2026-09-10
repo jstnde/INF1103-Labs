@@ -2,8 +2,8 @@ inventory = 0
 retries = 0
 
 while True:
-    userInput = input("enter a stock quantity (enter 'quit' to quit)")
-    if userInput == "quit":
+    userInput = input("Enter a stock quantity (enter 'quit' to quit): ")
+    if userInput.lower() == "quit":
         break
     elif not userInput.isdigit() or int(userInput) < 0:
         retries += 1
