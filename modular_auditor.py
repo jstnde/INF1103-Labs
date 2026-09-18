@@ -1,3 +1,15 @@
+def get_valid_input():
+    return
+
+def process_delivery(current_total, new_value):
+    return
+
+def calculate_tax(amount):
+    return
+
+def generate_report(total_units, failed_attempts):
+    return
+
 inventory = 0
 retries = 0
 
