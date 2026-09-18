@@ -1,5 +1,13 @@
 def get_valid_input():
-    return
+    userInput = input("Enter a stock quantity (enter 'quit' to quit): ")
+
+    if userInput.lower() == "quit":
+        return None
+    elif not userInput.isdigit() or int(userInput) < 0:
+        print("invalid stock value")
+        return -1
+    else:
+        return int(userInput)
 
 def process_delivery(current_total, new_value):
     return
@@ -17,14 +25,13 @@ total_units = 0
 failed_attempts = 0
 
 while True:
-    userInput = input("Enter a stock quantity (enter 'quit' to quit): ")
-    if userInput.lower() == "quit":
+    valid_input = get_valid_input()
+    if not valid_input:
         break
-    elif not userInput.isdigit() or int(userInput) < 0:
+    elif valid_input < 0:
         failed_attempts += 1
-        print("invalid stock value")
     else:
-        total_units += int(userInput)
+        total_units += valid_input
         if total_units > 500:
             print("Alert! Total Inventory Exceeding 500!")
             break
