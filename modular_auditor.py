@@ -10,7 +10,7 @@ def get_valid_input():
         return int(userInput)
 
 def process_delivery(current_total, new_value):
-    return
+    return current_total + new_value
 
 def calculate_tax(amount):
     return
@@ -31,7 +31,7 @@ while True:
     elif valid_input < 0:
         failed_attempts += 1
     else:
-        total_units += valid_input
+        total_units = process_delivery(total_units, valid_input)
         if total_units > 500:
             print("Alert! Total Inventory Exceeding 500!")
             break
