@@ -8,23 +8,25 @@ def calculate_tax(amount):
     return
 
 def generate_report(total_units, failed_attempts):
+    print("Total units processed: ", total_units)
+    print("Number of Failed/Rejected Entries: ", failed_attempts)
+
     return
 
-inventory = 0
-retries = 0
+total_units = 0
+failed_attempts = 0
 
 while True:
     userInput = input("Enter a stock quantity (enter 'quit' to quit): ")
     if userInput.lower() == "quit":
         break
     elif not userInput.isdigit() or int(userInput) < 0:
-        retries += 1
+        failed_attempts += 1
         print("invalid stock value")
     else:
-        inventory += int(userInput)
-        if inventory > 500:
+        total_units += int(userInput)
+        if total_units > 500:
             print("Alert! Total Inventory Exceeding 500!")
             break
 
-print("Total units processed: ", inventory)
-print("Number of Failed/Rejected Entries: ", retries)
+generate_report(total_units, failed_attempts)
