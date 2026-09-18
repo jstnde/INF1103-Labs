@@ -13,7 +13,7 @@ def process_delivery(current_total, new_value):
     return current_total + new_value
 
 def calculate_tax(amount):
-    return
+    return amount * .1
 
 def generate_report(total_units, failed_attempts):
     print("Total units processed: ", total_units)
@@ -32,6 +32,7 @@ while True:
         failed_attempts += 1
     else:
         total_units = process_delivery(total_units, valid_input)
+        print("current calculated tax: ", calculate_tax(total_units))
         if total_units > 500:
             print("Alert! Total Inventory Exceeding 500!")
             break
