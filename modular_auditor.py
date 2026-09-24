@@ -21,11 +21,14 @@ def generate_report(total_units, failed_attempts):
 
     return
 
+def load_inventory():
+    return
+
+def save_inventory():
+    return
+
 total_units = 0
 failed_attempts = 0
-
-# create load inventory
-# create save inventory
 
 # at start, attempt to load inventory,
 # if inventory file does not exist, start with an empty inventory
