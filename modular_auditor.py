@@ -22,7 +22,12 @@ def generate_report(total_units, failed_attempts):
     return
 
 def load_inventory():
-    return
+    try:
+        with open("inventory.txt", "r") as file:
+            inventory = file.readlines()
+    except Exception:
+        return list()
+    return inventory
 
 def save_inventory():
     return
@@ -32,6 +37,8 @@ failed_attempts = 0
 
 # at start, attempt to load inventory,
 # if inventory file does not exist, start with an empty inventory
+
+inventory = load_inventory()
 
 while True:
     valid_input = get_valid_input()
