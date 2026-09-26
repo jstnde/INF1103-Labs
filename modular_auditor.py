@@ -19,7 +19,7 @@ def process_order(current_total, inventory, last_id, valid_input):
     print("\nNew Order Added: ")
     print(inventory[-1][0] + ", " + inventory[-1][1] + ", " + inventory[-1][2] + "\n")
 
-    return current_total + valid_input[1]
+    return last_id, current_total + valid_input[1]
 
 def generate_report(total_units, failed_attempts):
     print("Total units processed: ", total_units)
@@ -31,6 +31,7 @@ def load_inventory():
     try:
         with open("inventory.txt", "r") as file:
             inventory = file.read().split("\n")
+            inventory.pop()
     except FileNotFoundError:
         return list()
     return inventory
@@ -57,11 +58,11 @@ print()
 while True:
     valid_input = get_valid_input()
     if not valid_input:
-        # save final total and the transaction history list to inventory.txt
         break
     elif valid_input == -1:
         failed_attempts += 1
     else:
-        total_units = process_order(total_units, inventory, last_id, valid_input)
+        last_id, total_units = process_order(total_units, inventory, last_id, valid_input)
 
+save_inventory(inventory)
 generate_report(total_units, failed_attempts)
