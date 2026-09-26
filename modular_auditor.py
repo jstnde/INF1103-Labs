@@ -1,19 +1,19 @@
 def get_valid_input():
-    userInput = input("Enter a stock quantity (enter 'quit' to quit): ")
+    product_name = input("Enter Product Name (enter 'quit' to quit): ")
 
-    if userInput.lower() == "quit":
+    if product_name.lower() == "quit":
         return None
-    elif not userInput.isdigit() or int(userInput) < 0:
-        print("invalid stock value")
+
+    quantity = input("Enter Quantity: ")
+
+    if not quantity.isdigit() or int(quantity) < 0:
+        print("invalid quantity value\n")
         return -1
     else:
-        return int(userInput)
+        return product_name, int(quantity)
 
-def process_delivery(current_total, new_value):
+def process_order(current_total, new_value):
     return current_total + new_value
-
-def calculate_tax(amount):
-    return amount * .1
 
 def generate_report(total_units, failed_attempts):
     print("Total units processed: ", total_units)
@@ -51,14 +51,10 @@ while True:
     if not valid_input:
         # save final total and the transaction history list to inventory.txt
         break
-    elif valid_input < 0:
+    elif valid_input == -1:
         failed_attempts += 1
     else:
-        total_units = process_delivery(total_units, valid_input)
+        total_units = process_order(total_units, valid_input[1])
         # use list to store every valid transaction amount entered
-        print("current calculated tax: ", calculate_tax(total_units))
-        if total_units > 500:
-            print("Alert! Total Inventory Exceeding 500!")
-            break
 
 generate_report(total_units, failed_attempts)
