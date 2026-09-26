@@ -12,8 +12,14 @@ def get_valid_input():
     else:
         return product_name, int(quantity)
 
-def process_order(current_total, new_value):
-    return current_total + new_value
+def process_order(current_total, inventory, last_id, valid_input):
+    last_id += 1
+    inventory.append((str(last_id), valid_input[0], str(valid_input[1])))
+    
+    print("\nNew Order Added: ")
+    print(inventory[-1][0] + ", " + inventory[-1][1] + ", " + inventory[-1][2] + "\n")
+
+    return current_total + valid_input[1]
 
 def generate_report(total_units, failed_attempts):
     print("Total units processed: ", total_units)
@@ -38,12 +44,14 @@ def save_inventory(inventory):
 inventory = []
 total_units = 0
 failed_attempts = 0
+last_id = 0
 
 print("Current Orders:\n")
 for order in load_inventory():
     item = order.split(",")
     print(item[0] + ", " + item[1] + ", " + item[2])
     total_units += int(item[-1])
+    last_id = int(item[0])
 print()
 
 while True:
@@ -54,7 +62,6 @@ while True:
     elif valid_input == -1:
         failed_attempts += 1
     else:
-        total_units = process_order(total_units, valid_input[1])
-        # use list to store every valid transaction amount entered
+        total_units = process_order(total_units, inventory, last_id, valid_input)
 
 generate_report(total_units, failed_attempts)
