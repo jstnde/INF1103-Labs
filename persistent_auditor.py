@@ -45,7 +45,7 @@ def save_inventory(inventory):
 inventory = []
 total_units = 0
 failed_attempts = 0
-last_id = 0
+last_id = 1000
 
 print("Current Orders:\n")
 for order in load_inventory():
