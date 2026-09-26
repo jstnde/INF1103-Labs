@@ -29,7 +29,10 @@ def load_inventory():
         return list()
     return inventory
 
-def save_inventory():
+def save_inventory(inventory):
+    with open("inventory.txt", "a") as file:
+        for item in inventory:
+            file.write(item[0] + "," + item[1] + "," + item[2] + "\n")
     return
 
 inventory = []
