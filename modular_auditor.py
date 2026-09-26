@@ -24,21 +24,24 @@ def generate_report(total_units, failed_attempts):
 def load_inventory():
     try:
         with open("inventory.txt", "r") as file:
-            inventory = file.readlines()
-    except Exception:
+            inventory = file.read().split("\n")
+    except FileNotFoundError:
         return list()
     return inventory
 
 def save_inventory():
     return
 
+inventory = []
 total_units = 0
 failed_attempts = 0
 
-# at start, attempt to load inventory,
-# if inventory file does not exist, start with an empty inventory
-
-inventory = load_inventory()
+print("Current Orders:\n")
+for order in load_inventory():
+    item = order.split(",")
+    print(item[0] + ", " + item[1] + ", " + item[2])
+    total_units += int(item[-1])
+print()
 
 while True:
     valid_input = get_valid_input()
