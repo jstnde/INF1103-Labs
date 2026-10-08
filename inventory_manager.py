@@ -67,7 +67,7 @@ def display_all():
     else:
         for item in inventory:
             print(
-                f"ID: {item.get("id")} | Name: {item.get("name")} | Price: {float(item.get("price")):.2f} | Stock: {item.get("stock")}")
+                f"ID: {item.get("id")} | Name: {item.get("name")} | Price: ${float(item.get("price")):.2f} | Stock: {item.get("stock")}")
     print(f"{"-" * 25}\n")
     return
 
