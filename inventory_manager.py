@@ -1,4 +1,5 @@
 import json
+from getpass import fallback_getpass
 
 fp = "inventory.json"
 
@@ -8,18 +9,20 @@ def add_product():
 def update_stock():
     return
 
-def search_product(product_id):
+def search_product(product_id, display: bool = True):
     for item in inventory:
         if item.id == product_id:
-            print(f"""\nProduct Found\n{"-" * 25}
+            if display:
+                print(f"""\nProduct Found\n{"-" * 25}
 ID: {item.id}
 Name: {item.name}
 Price: ${item.price}
 Stock: {item.stock}
 {"-" * 25}\n""")
-            return
-    print("\nProduct Not Found.\n")
-    return
+            return item
+    if display:
+        print("\nProduct Not Found.\n")
+    return None
 
 def display_all():
     print(f"\nCurrent Inventory\n{"-" * 25}")
