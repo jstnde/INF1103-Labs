@@ -1,3 +1,5 @@
+import json
+
 def add_product():
     return
 
@@ -41,9 +43,8 @@ def generate_report(total_units, failed_attempts):
 
 def load_inventory():
     try:
-        with open("inventory.txt", "r") as file:
-            inventory = file.read().split("\n")
-            inventory.pop()
+        with open("inventory.json", "r") as file:
+            inventory = json.load(file)
     except FileNotFoundError:
         return list()
     return inventory
