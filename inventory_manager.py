@@ -20,7 +20,7 @@ def get_valid_item():
     if not new_stock.isdigit() or int(new_stock) < 0:
         print("Invalid Stock Quantity.\n")
         return None
-    return {"id": new_id, "name": new_name, "price": new_price, "stock": new_stock}
+    return {"id": new_id.upper(), "name": new_name, "price": new_price, "stock": new_stock}
 
 
 def add_product(item):
@@ -46,7 +46,7 @@ Current Stock: {item.get("stock")}\n""")
 
 def search_product(product_id, display: bool = False):
     for item in inventory:
-        if item.get("id") == product_id:
+        if item.get("id") == product_id.upper():
             if display:
                 print(f"""\nProduct Found\n{"-" * 25}
 ID: {item.get("id")}
