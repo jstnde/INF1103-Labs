@@ -2,31 +2,33 @@ import json
 
 fp = "inventory.json"
 
-def add_product():
+def add_product(item):
+    if item:
+        inventory.append(item)
     return
 
 def update_stock(item):
     if item:
         print(f"""Product Found:
-Name: {item.name}
-Current Stock: {item.stock}\n""")
+Name: {item.get("name")}
+Current Stock: {item.get("stock")}\n""")
         new_stock = input("New Stock Quantity: ")
         if not new_stock.isdigit() or int(new_stock) < 0:
             print("Invalid Stock Quantity.")
         else:
-            item.stock = new_stock
+            item["stock"] = new_stock
             print("\nStock Updated Successfully!\n")
     return
 
 def search_product(product_id, display: bool = True):
     for item in inventory:
-        if item.id == product_id:
+        if item.get("id") == product_id:
             if display:
                 print(f"""\nProduct Found\n{"-" * 25}
-ID: {item.id}
-Name: {item.name}
-Price: ${item.price}
-Stock: {item.stock}
+ID: {item.get("id")}
+Name: {item.get("name")}
+Price: ${item.get("price")}
+Stock: {item.get("stock")}
 {"-" * 25}\n""")
             return item
     if display:
@@ -39,7 +41,7 @@ def display_all():
         print("Current Inventory is Empty!")
     else:
         for item in inventory:
-            print(f"ID: {item.id} | Name: {item.name} | Price: {item.price} | Stock: {item.stock}")
+            print(f"ID: {item.get("id")} | Name: {item.get("name")} | Price: {float(item.get("price")):.2f} | Stock: {item.get("stock")}")
     print(f"{"-" * 25}\n")
     return
 
