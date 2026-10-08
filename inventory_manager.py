@@ -12,6 +12,13 @@ def search_product():
     return
 
 def display_all():
+    print(f"\nCurrent Inventory\n{"-" * 25}")
+    if len(inventory) == 0:
+        print("Current Inventory is Empty!")
+    else:
+        for item in inventory:
+            print(f"ID: {item.id} | Name: {item.name} | Price: {item.price} | Stock: {item.stock}")
+    print(f"{"-" * 25}\n")
     return
 
 def get_valid_input():
