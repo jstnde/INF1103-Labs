@@ -9,7 +9,7 @@ def add_product(item):
 
 def update_stock(item):
     if item:
-        print(f"""Product Found:
+        print(f"""\nProduct Found:
 Name: {item.get("name")}
 Current Stock: {item.get("stock")}\n""")
         new_stock = input("New Stock Quantity: ")
@@ -116,14 +116,14 @@ while True:
         if option == "1":
             display_all()
         elif option == "2":
-            print("Add New Product")
+            print("\nAdd New Product")
             add_product()
         elif option == "3":
-            print("Update Stock")
+            print("\nUpdate Stock")
             item = search_product(input("Enter Product ID: "), False)
             update_stock(item)
         elif option == "4":
-            print("Search Product")
+            print("\nSearch Product")
             search_product(input("Enter Product ID: "))
         elif option == "5":
             save_inventory()
