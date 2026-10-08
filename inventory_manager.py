@@ -114,9 +114,19 @@ def load_inventory():
     return inventory
 
 
-def save_inventory():
+def save_inventory(exiting = False):
+    if exiting:
+        print("\nSaving inventory before exit...")
+    else:
+        print("\nSaving inventory...")
+
     with open(fp, "w") as file:
-        json.dump(inventory, file)
+        json.dump(inventory, file, indent=1)
+
+    if exiting:
+        print("Inventory saved successfully.\n")
+    else:
+        print(f"Inventory saved successfully to {fp}.\n")
     return
 
 
@@ -144,6 +154,7 @@ while True:
     option = input("Enter option: ")
     if option in options.keys():
         if option == "6":
+            save_inventory(True)
             break
         if option == "1":
             display_all()
@@ -162,4 +173,5 @@ while True:
     else:
         print("Invalid Option\n")
 
-save_inventory()
+print("Thank you for using Inventory Management System.")
+print("Program Terminated.")
