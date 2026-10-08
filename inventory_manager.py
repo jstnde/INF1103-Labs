@@ -52,7 +52,7 @@ def load_inventory():
         return list()
     return inventory
 
-def save_inventory(inventory):
+def save_inventory():
     with open(fp, "w") as file:
         json.dump(inventory, file)
     return
@@ -91,9 +91,8 @@ while True:
         elif option == "4":
             search_product()
         elif option == "5":
-            save_inventory(inventory)
+            save_inventory()
     else:
         print("Invalid Option\n")
 
-
-save_inventory(inventory)
+save_inventory()
