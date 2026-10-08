@@ -1,5 +1,7 @@
 import json
 
+fp = "inventory.json"
+
 def add_product():
     return
 
@@ -43,29 +45,26 @@ def generate_report(total_units, failed_attempts):
 
 def load_inventory():
     try:
-        with open("inventory.json", "r") as file:
+        with open(fp, "r") as file:
             inventory = json.load(file)
+        print(f"{fp} found.\nInventory loaded successfully.\n")
     except FileNotFoundError:
         return list()
     return inventory
 
 def save_inventory(inventory):
-    with open("inventory.json", "w") as file:
+    with open(fp, "w") as file:
         json.dump(inventory, file)
     return
 
-inventory = []
+print("="*30)
+print("INVENTORY MANAGEMENT SYSTEM")
+print("="*30)
+
+inventory = load_inventory()
 total_units = 0
 failed_attempts = 0
 last_id = 1000
-
-print("Current Orders:\n")
-for order in load_inventory():
-    item = order.split(",")
-    print(item[0] + ", " + item[1] + ", " + item[2])
-    total_units += int(item[-1])
-    last_id = int(item[0])
-print()
 
 while True:
     valid_input = get_valid_input()
