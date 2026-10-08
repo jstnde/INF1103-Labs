@@ -62,18 +62,38 @@ print("INVENTORY MANAGEMENT SYSTEM")
 print("="*30)
 
 inventory = load_inventory()
-total_units = 0
-failed_attempts = 0
-last_id = 1000
+
+options = {
+    "1": "Display All Products",
+    "2": "Add Product",
+    "3": "Update Stock",
+    "4": "Search Product",
+    "5": "Save Inventory",
+    "6": "Exit"
+}
+
+print(f"{"-" * 7} MENU {"-" * 7}")
+for key, val in options.items():
+    print(f"{key}. {val}")
+print(f"{"-" * 20}\n")
 
 while True:
-    valid_input = get_valid_input()
-    if not valid_input:
-        break
-    elif valid_input == -1:
-        failed_attempts += 1
+    option = input("Enter option: ")
+    if option in options.keys():
+        if option == "6":
+            break
+        if option == "1":
+            display_all()
+        elif option == "2":
+            add_product()
+        elif option == "3":
+            update_stock()
+        elif option == "4":
+            search_product()
+        elif option == "5":
+            save_inventory(inventory)
     else:
-        last_id, total_units = process_order(total_units, inventory, last_id, valid_input)
+        print("Invalid Option\n")
+
 
 save_inventory(inventory)
-generate_report(total_units, failed_attempts)
