@@ -1,12 +1,11 @@
 import json
-from getpass import fallback_getpass
 
 fp = "inventory.json"
 
 def add_product():
     return
 
-def update_stock():
+def update_stock(item):
     return
 
 def search_product(product_id, display: bool = True):
@@ -105,12 +104,15 @@ while True:
         if option == "1":
             display_all()
         elif option == "2":
+            print("Add New Product")
             add_product()
         elif option == "3":
-            update_stock()
+            print("Update Stock")
+            item = search_product(input("Enter Product ID: "), False)
+            update_stock(item)
         elif option == "4":
-            continue
-            # search_product()
+            print("Search Product")
+            search_product(input("Enter Product ID: "))
         elif option == "5":
             save_inventory()
     else:
