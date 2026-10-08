@@ -1,3 +1,15 @@
+def add_product():
+    return
+
+def update_stock():
+    return
+
+def search_product():
+    return
+
+def display_all():
+    return
+
 def get_valid_input():
     product_name = input("Enter Product Name (enter 'quit' to quit): ")
 
