@@ -8,7 +8,17 @@ def add_product():
 def update_stock():
     return
 
-def search_product():
+def search_product(product_id):
+    for item in inventory:
+        if item.id == product_id:
+            print(f"""\nProduct Found\n{"-" * 25}
+ID: {item.id}
+Name: {item.name}
+Price: ${item.price}
+Stock: {item.stock}
+{"-" * 25}\n""")
+            return
+    print("\nProduct Not Found.\n")
     return
 
 def display_all():
@@ -96,7 +106,8 @@ while True:
         elif option == "3":
             update_stock()
         elif option == "4":
-            search_product()
+            continue
+            # search_product()
         elif option == "5":
             save_inventory()
     else:
