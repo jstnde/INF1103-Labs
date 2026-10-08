@@ -6,6 +6,16 @@ def add_product():
     return
 
 def update_stock(item):
+    if item:
+        print(f"""Product Found:
+Name: {item.name}
+Current Stock: {item.stock}\n""")
+        new_stock = input("New Stock Quantity: ")
+        if not new_stock.isdigit() or int(new_stock) < 0:
+            print("Invalid Stock Quantity.")
+        else:
+            item.stock = new_stock
+            print("\nStock Updated Successfully!\n")
     return
 
 def search_product(product_id, display: bool = True):
