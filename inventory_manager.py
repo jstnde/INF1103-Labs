@@ -40,7 +40,7 @@ Current Stock: {item.get("stock")}\n""")
             print("Invalid Stock Quantity.")
         else:
             item["stock"] = new_stock
-            print("\nStock Updated Successfully!\n")
+            print("\nStock updated successfully!\n")
     return
 
 
@@ -51,7 +51,7 @@ def search_product(product_id, display: bool = False):
                 print(f"""\nProduct Found\n{"-" * 25}
 ID: {item.get("id")}
 Name: {item.get("name")}
-Price: ${item.get("price"):.2f}
+Price: ${float(item.get("price")):.2f}
 Stock: {item.get("stock")}
 {"-" * 25}\n""")
             return item
