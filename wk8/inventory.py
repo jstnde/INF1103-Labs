@@ -1,4 +1,4 @@
-from wk8.product import Product
+from product import Product
 
 
 class Inventory:
@@ -6,6 +6,10 @@ class Inventory:
         if products is None:
             products = list()
         self.__products = products
+
+    @property
+    def products(self):
+        return self.__products
 
     def add_product(self, product):
         self.__products.append(product)
@@ -17,5 +21,14 @@ class Inventory:
         return None
 
     def display_all(self):
+        if len(self.__products) == 0:
+            print("Current Inventory is Empty!")
+        else:
+            for product in self.__products:
+                product.display_information()
+
+    def __dict__(self):
+        products = []
         for product in self.__products:
-            product.display_information()
+            products.append(product.__dict__())
+        return products
