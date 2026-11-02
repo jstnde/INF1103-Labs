@@ -8,13 +8,13 @@ class Inventory:
         self.__products = products
 
     @property
-    def products(self):
+    def products(self) -> list[Product]:
         return self.__products
 
-    def add_product(self, product):
+    def add_product(self, product: Product):
         self.__products.append(product)
 
-    def search_product(self, product_id) -> Product | None:
+    def search_product(self, product_id: str) -> Product | None:
         for product in self.__products:
             if product.product_id == product_id:
                 return product
@@ -27,7 +27,7 @@ class Inventory:
             for product in self.__products:
                 product.display_information()
 
-    def __dict__(self):
+    def __dict__(self) -> list[dict]:
         products = []
         for product in self.__products:
             products.append(product.__dict__())

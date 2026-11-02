@@ -8,7 +8,7 @@ class File:
     def __init__(self, filepath = "inventory.json"):
         self.__filepath = filepath
 
-    def load_inventory(self):
+    def load_inventory(self) -> list[Product]:
         try:
             with open(self.__filepath, "r") as file:
                 unprocessed_inventory = json.load(file)
@@ -29,7 +29,7 @@ class File:
             inventory.append(Product(product_id, name, price, stock))
         return inventory
 
-    def save_inventory(self, inventory:Inventory, exiting):
+    def save_inventory(self, inventory:Inventory, exiting: bool):
         if exiting:
             print("\nSaving inventory before exit...")
         else:

@@ -6,16 +6,16 @@ class Product:
         self.__stock = stock
 
     @property
-    def product_id(self):
+    def product_id(self) -> str:
         return self.__product_id
 
-    def update_stock(self, quantity):
+    def update_stock(self, quantity: int):
         self.__stock = quantity
 
     def display_information(self):
         print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock {self.__stock}")
 
-    def __dict__(self):
+    def __dict__(self) -> dict[str, str | float | int]:
         return {
             "product_id": self.__product_id,
             "name": self.__name,

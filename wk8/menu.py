@@ -42,7 +42,7 @@ def update_stock(inventory:Inventory):
         if not quantity.isdigit() or int(quantity) < 0:
             print("Invalid Stock Quantity.")
         else:
-            product.update_stock(quantity)
+            product.update_stock(int(quantity))
             print("\nStock updated successfully!\n")
 
 
@@ -71,7 +71,7 @@ class Menu:
         self.__status = True # Continue: True, Exit: False
 
     @property
-    def status(self):
+    def status(self) -> bool:
         return self.__status
 
     def display_menu(self):
@@ -80,7 +80,7 @@ class Menu:
             print(f"{key}. {val}")
         print(f"{"-" * 20}\n")
 
-    def is_valid_option(self, option) -> bool:
+    def is_valid_option(self, option: str) -> bool:
         return option in self.__options.keys()
 
     def execute_option(self, option:str, file:File, inventory:Inventory):
