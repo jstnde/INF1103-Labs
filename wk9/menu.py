@@ -1,7 +1,6 @@
 from file import File
 from inventory import Inventory
-from product import Product
-from wk9.product import PhysicalProduct, DigitalProduct
+from product import PhysicalProduct, DigitalProduct
 
 
 def display_all_products(inventory:Inventory):
