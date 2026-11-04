@@ -41,7 +41,7 @@ class PhysicalProduct(Product):
         print(f"Weight: {self.__weight}")
 
     def get_fulfilment_info(self):
-        pass
+        print("Product requires physical shipping.")
 
 
 class DigitalProduct(Product):
@@ -54,4 +54,4 @@ class DigitalProduct(Product):
         print(f"Download Size: {self.__download_size}")
 
     def get_fulfilment_info(self):
-        pass
+        print("Product is delivered digitally.")
