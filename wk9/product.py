@@ -13,7 +13,7 @@ class Product:
         self.__stock = quantity
 
     def display_information(self):
-        print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock {self.__stock}")
+        print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock: {self.__stock}")
 
     def __dict__(self) -> dict[str, str | float | int]:
         return {
@@ -25,7 +25,13 @@ class Product:
 
 
 class PhysicalProduct(Product):
-    pass
+    def __init__(self, product_id: str, name: str, price: float, stock: int, weight: int):
+        super().__init__(product_id, name, price, stock)
+        self.__weight = weight
+
+    def display_information(self):
+        super().display_information()
+        print(f"Weight: {self.__weight}")
 
 
 class DigitalProduct(Product):
