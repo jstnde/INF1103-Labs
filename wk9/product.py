@@ -49,6 +49,11 @@ class PhysicalProduct(Product, CanBeShipped):
     def get_fulfilment_info(self):
         print("Product requires physical shipping.")
 
+    def __dict__(self) -> dict[str, str | float | int]:
+        physical = super().__dict__()
+        physical.update({"weight": self.__weight})
+        return physical
+
     def calculate_shipping_cost(self) -> float:
         return self.__weight * .1
 
@@ -64,3 +69,8 @@ class DigitalProduct(Product):
 
     def get_fulfilment_info(self):
         print("Product is delivered digitally.")
+
+    def __dict__(self) -> dict[str, str | float | int]:
+        digital = super().__dict__()
+        digital.update({"download_size": self.__download_size})
+        return digital

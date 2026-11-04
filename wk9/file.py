@@ -2,6 +2,7 @@ import json
 
 from inventory import Inventory
 from product import Product
+from wk9.product import DigitalProduct, PhysicalProduct
 
 
 class File:
@@ -24,9 +25,14 @@ class File:
             name = item.get("name", None)
             price = item.get("price", None)
             stock = item.get("stock", None)
-            if product_id is None or name is None or price is None or stock is None:
+            weight = item.get("weight", None)
+            download_size = item.get("download_size", None)
+            if product_id is None or name is None or price is None or stock is None or (weight is None and download_size is None):
                 continue # faulty entry
-            inventory.append(Product(product_id, name, price, stock))
+            if not weight is None:
+                inventory.append(PhysicalProduct(product_id, name, price, stock, weight))
+            elif not download_size is None:
+                inventory.append(DigitalProduct(product_id, name, price, stock, download_size))
         return inventory
 
     def save_inventory(self, inventory:Inventory, exiting: bool):
