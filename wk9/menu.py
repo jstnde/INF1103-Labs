@@ -30,13 +30,13 @@ def add_product(inventory:Inventory):
 
     product_type = input("Product Type (physical: 0, digital: 1): ")
     if product_type == "0":
-        weight = input("Weight(kg): ")
+        weight = input("Weight (kg): ")
         if not weight.isdigit() or int(weight) < 0:
             print("Invalid Weight Value.\n")
             return
         product = PhysicalProduct(product_id, name, float(price), int(stock), int(weight))
     elif product_type == "1":
-        download_size = input("Download Size(MB): ")
+        download_size = input("Download Size (MB): ")
         if not download_size.isdigit() or int(download_size) < 0:
             print("Invalid Download Size.\n")
             return
