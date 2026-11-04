@@ -22,3 +22,11 @@ class Product:
             "price": self.__price,
             "stock": self.__stock
         }
+
+
+class PhysicalProduct(Product):
+    pass
+
+
+class DigitalProduct(Product):
+    pass
