@@ -1,8 +1,7 @@
 import json
 
 from inventory import Inventory
-from product import Product
-from wk9.product import DigitalProduct, PhysicalProduct
+from product import Product, DigitalProduct, PhysicalProduct
 
 
 class File:
