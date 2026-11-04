@@ -35,4 +35,10 @@ class PhysicalProduct(Product):
 
 
 class DigitalProduct(Product):
-    pass
+    def __init__(self, product_id: str, name: str, price: float, stock: int, download_size: int):
+        super().__init__(product_id, name, price, stock)
+        self.__download_size = download_size
+
+    def display_information(self):
+        super().display_information()
+        print(f"Download Size: {self.__download_size}")
