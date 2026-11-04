@@ -1,6 +1,7 @@
 from file import File
 from inventory import Inventory
 from product import Product
+from wk9.product import PhysicalProduct, DigitalProduct
 
 
 def display_all_products(inventory:Inventory):
@@ -27,7 +28,23 @@ def add_product(inventory:Inventory):
     if not stock.isdigit() or int(stock) < 0:
         print("Invalid Stock Quantity.\n")
         return
-    product = Product(product_id, name, float(price), int(stock))
+
+    product_type = input("Is the product physical(0) or digital(1)?")
+    if product_type is "0":
+        weight = input("Weight(kg): ")
+        if not weight.isdigit() or int(weight) < 0:
+            print("Invalid Weight Value.\n")
+            return
+        product = PhysicalProduct(product_id, name, float(price), int(stock), int(weight))
+    elif product_type is "1":
+        download_size = input("Download Size(MB): ")
+        if not download_size.isdigit() or int(download_size) < 0:
+            print("Invalid Download Size.\n")
+            return
+        product = DigitalProduct(product_id, name, float(price), int(stock), int(download_size))
+    else:
+        print("Invalid product type.\n")
+        return
 
     inventory.add_product(product)
     print("\nProduct added successfully!\n")
