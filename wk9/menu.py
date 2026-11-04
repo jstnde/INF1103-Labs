@@ -28,7 +28,7 @@ def add_product(inventory:Inventory):
         print("Invalid Stock Quantity.\n")
         return
 
-    product_type = input("Is the product physical(0) or digital(1)?")
+    product_type = input("Product Type (physical: 0, digital: 1): ")
     if product_type == "0":
         weight = input("Weight(kg): ")
         if not weight.isdigit() or int(weight) < 0:
