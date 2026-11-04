@@ -1,5 +1,6 @@
-# Git Log file
-log.txt
+# Data files
+*.txt
+*.json
 
 # IDE settings
 .idea/
