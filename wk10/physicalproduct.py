@@ -7,12 +7,12 @@ class PhysicalProduct(Product, CanBeShipped):
         super().__init__(product_id, name, price, stock, supplier)
         self.__weight = weight
 
-    def display_information(self):
+    def display_information(self) -> None:
         super().display_information()
         print(f"Weight: {self.__weight}")
 
-    def get_fulfilment_info(self):
-        print("Product requires physical shipping.")
+    def get_fulfilment_info(self) -> str:
+        return "Product requires physical shipping."
 
     def __dict__(self) -> dict[str, str | float | int]:
         physical = super().__dict__()

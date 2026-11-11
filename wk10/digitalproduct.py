@@ -10,8 +10,8 @@ class DigitalProduct(Product):
         super().display_information()
         print(f"Download Size: {self.__download_size}")
 
-    def get_fulfilment_info(self) -> None:
-        print("Product is delivered digitally.")
+    def get_fulfilment_info(self) -> str:
+        return "Product is delivered digitally."
 
     def __dict__(self) -> dict[str, str | float | int]:
         digital = super().__dict__()

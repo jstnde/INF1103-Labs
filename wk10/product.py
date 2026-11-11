@@ -35,5 +35,5 @@ class Product(ABC):
         }
 
     @abstractmethod
-    def get_fulfilment_info(self) -> None:
+    def get_fulfilment_info(self) -> str:
         pass

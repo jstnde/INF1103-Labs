@@ -38,3 +38,12 @@ class Inventory:
         for product in self.__products:
             products.append(product.__dict__())
         return products
+
+    @staticmethod
+    def show_product_details(product: Product) -> None:
+        product.display_information()
+        print(product.get_fulfilment_info())
+
+    def show_all_product_details(self) -> None:
+        for product in self.__products:
+            self.show_product_details(product)
