@@ -1,15 +1,16 @@
 from file import File
 from inventory import Inventory
-from product import PhysicalProduct, DigitalProduct
+from digitalproduct import DigitalProduct
+from physicalproduct import PhysicalProduct
 
 
-def display_all_products(inventory:Inventory):
+def display_all_products(inventory:Inventory) -> None:
     print(f"\nCurrent Inventory\n{"-" * 25}")
     inventory.display_all()
     print(f"{"-" * 25}\n")
 
 
-def add_product(inventory:Inventory):
+def add_product(inventory:Inventory) -> None:
     print("\nAdd New Product")
     product_id = input("Product ID: ")
     if inventory.search_product(product_id):
@@ -49,7 +50,7 @@ def add_product(inventory:Inventory):
     print("\nProduct added successfully!\n")
 
 
-def update_stock(inventory:Inventory):
+def update_stock(inventory:Inventory) -> None:
     print("\nUpdate Stock")
     product_id = input("Enter Product ID: ")
     product = inventory.search_product(product_id)
@@ -62,7 +63,7 @@ def update_stock(inventory:Inventory):
             print("\nStock updated successfully!\n")
 
 
-def search_product(inventory:Inventory):
+def search_product(inventory:Inventory) -> None:
     print("\nSearch Product")
     product_id = input("Enter Product ID: ")
     product = inventory.search_product(product_id)
@@ -70,7 +71,7 @@ def search_product(inventory:Inventory):
         product.display_information()
 
 
-def save_inventory(file:File, inventory:Inventory, exiting:bool = False):
+def save_inventory(file:File, inventory:Inventory, exiting:bool = False) -> None:
     file.save_inventory(inventory, exiting)
 
 
@@ -90,7 +91,7 @@ class Menu:
     def status(self) -> bool:
         return self.__status
 
-    def display_menu(self):
+    def display_menu(self) -> None:
         print(f"{"-" * 7} MENU {"-" * 7}")
         for key, val in self.__options.items():
             print(f"{key}. {val}")
@@ -99,7 +100,7 @@ class Menu:
     def is_valid_option(self, option: str) -> bool:
         return option in self.__options.keys()
 
-    def execute_option(self, option:str, file:File, inventory:Inventory):
+    def execute_option(self, option:str, file:File, inventory:Inventory) -> None:
         if option == "6":
             save_inventory(file, inventory, exiting=True)
             self.__status = False

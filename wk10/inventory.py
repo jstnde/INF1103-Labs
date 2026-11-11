@@ -11,7 +11,7 @@ class Inventory:
     def products(self) -> list[Product]:
         return self.__products
 
-    def add_product(self, product: Product):
+    def add_product(self, product: Product) -> None:
         self.__products.append(product)
 
     def remove_product(self, product_id: str) -> None:
@@ -26,7 +26,7 @@ class Inventory:
                 return product
         return None
 
-    def display_all(self):
+    def display_all(self) -> None:
         if len(self.__products) == 0:
             print("Current Inventory is Empty!")
         else:

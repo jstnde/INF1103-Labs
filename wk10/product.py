@@ -18,10 +18,10 @@ class Product(ABC):
     def price(self) -> float:
         return self.__price
 
-    def update_stock(self, quantity: int):
+    def update_stock(self, quantity: int) -> None:
         self.__stock = quantity
 
-    def display_information(self):
+    def display_information(self) -> None:
         print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock: {self.__stock}")
         if self.__supplier:
             self.__supplier.display_information()
@@ -35,5 +35,5 @@ class Product(ABC):
         }
 
     @abstractmethod
-    def get_fulfilment_info(self):
+    def get_fulfilment_info(self) -> None:
         pass

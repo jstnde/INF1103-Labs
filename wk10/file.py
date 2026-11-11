@@ -1,11 +1,13 @@
 import json
 
 from inventory import Inventory
-from product import Product, DigitalProduct, PhysicalProduct
+from product import Product
+from digitalproduct import DigitalProduct
+from physicalproduct import PhysicalProduct
 
 
 class File:
-    def __init__(self, filepath = "inventory.json"):
+    def __init__(self, filepath: str = "inventory.json"):
         self.__filepath = filepath
 
     def load_inventory(self) -> list[Product]:
@@ -28,13 +30,13 @@ class File:
             download_size = item.get("download_size", None)
             if product_id is None or name is None or price is None or stock is None or (weight is None and download_size is None):
                 continue # faulty entry
-            if not weight is None:
+            if weight:
                 inventory.append(PhysicalProduct(product_id, name, price, stock, weight))
-            elif not download_size is None:
+            elif download_size:
                 inventory.append(DigitalProduct(product_id, name, price, stock, download_size))
         return inventory
 
-    def save_inventory(self, inventory:Inventory, exiting: bool):
+    def save_inventory(self, inventory:Inventory, exiting: bool) -> None:
         if exiting:
             print("\nSaving inventory before exit...")
         else:
