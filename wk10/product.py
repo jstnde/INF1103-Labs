@@ -14,6 +14,10 @@ class Product(ABC):
     def product_id(self) -> str:
         return self.__product_id
 
+    @property
+    def price(self) -> float:
+        return self.__price
+
     def update_stock(self, quantity: int):
         self.__stock = quantity
 
