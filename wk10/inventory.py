@@ -2,10 +2,10 @@ from product import Product
 
 
 class Inventory:
-    def __init__(self, products=None):
+    def __init__(self, products: list[Product] | None = None):
         if products is None:
             products = list()
-        self.__products = products
+        self.__products: list[Product] = products
 
     @property
     def products(self) -> list[Product]:
@@ -14,6 +14,12 @@ class Inventory:
     def add_product(self, product: Product):
         self.__products.append(product)
 
+    def remove_product(self, product_id: str) -> None:
+        product = self.search_product(product_id)
+        if product:
+            self.__products.remove(product)
+
+    # basically the find_product operation
     def search_product(self, product_id: str) -> Product | None:
         for product in self.__products:
             if product.product_id == product_id:
