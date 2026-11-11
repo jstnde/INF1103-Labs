@@ -1,12 +1,14 @@
 from abc import ABC, abstractmethod
+from supplier import Supplier
 
 
 class Product(ABC):
-    def __init__(self, product_id: str, name: str, price: float, stock: int = 0):
+    def __init__(self, product_id: str, name: str, price: float, stock: int, supplier: Supplier | None = None):
         self.__product_id = product_id
         self.__name = name
         self.__price = price
         self.__stock = stock
+        self.__supplier: Supplier | None = supplier
 
     @property
     def product_id(self) -> str:
@@ -17,6 +19,8 @@ class Product(ABC):
 
     def display_information(self):
         print(f"ID: {self.__product_id} | Name: {self.__name} | Price: ${self.__price:.2f} | Stock: {self.__stock}")
+        if self.__supplier:
+            self.__supplier.display_information()
 
     def __dict__(self) -> dict[str, str | float | int]:
         return {
